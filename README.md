@@ -16,7 +16,7 @@ Or install it yourself as:
 
     $ gem install sellect-translate
 
-## Usage
+## Create translation table
 
 Create migration table:
 
