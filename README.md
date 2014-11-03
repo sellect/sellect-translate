@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Create translation table
 
-Create migration table:
+Add migration table to your Application:
 
     $ rails g sellect:translate:install
 
