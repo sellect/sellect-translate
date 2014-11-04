@@ -3,16 +3,19 @@ module Sellect::Translate
 
     def self.register(klass, column)
 
-      # klass.send(:define_method, column) do
-      #   original_value = super()
+      klass.send(:define_method, column.to_s+'=') do |translation|
 
-      #   if Sellect::Translate.locale == Sellect::Translate.default_locale
-      #     original_value
-      #   else
-      #     puts "set the translated value from the translation table"
-      #   end
+        if Sellect::Translate.locale == Sellect::Translate.default_locale
+          write_attribute(column, translation)
+        else
+          new_translation = translations.where(locale: Sellect::Translate.locale).first_or_initialize
+          params = new_translation.params.nil? ? {} : new_translation.params
+          params[column] = translation
+          new_translation.update_column(:params, params)
+        end
 
-      # end
+      end
     end
+
   end
 end

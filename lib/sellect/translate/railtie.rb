@@ -14,6 +14,14 @@ module Sellect::Translate
         end
       end
 
+      initializer 'activeservice.autoload', :before => :set_autoload_paths do |app|
+        sellect_translate = File.expand_path('../../../../', __FILE__)
+        app.config.autoload_paths += [
+          File.join(sellect_translate, 'lib'),
+          File.join(sellect_translate, 'app/models')
+        ]
+      end
+
     end
   end
 

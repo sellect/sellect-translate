@@ -2,11 +2,19 @@ require 'sellect/translate/version'
 require 'sellect/translate/railtie'
 require 'sellect/translate/getter'
 require 'sellect/translate/setter'
-require 'sellect/translate/engine'
 
 module Sellect::Translate
 
   class << self
+
+    def locale
+      I18n.locale
+    end
+
+    def default_locale
+      I18n.default_locale
+    end
+
   end
 
   module Glue
