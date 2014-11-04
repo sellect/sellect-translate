@@ -11,7 +11,8 @@ module Sellect::Translate
           new_translation = translations.where(locale: Sellect::Translate.locale).first_or_initialize
           params = new_translation.params.nil? ? {} : new_translation.params
           params[column] = translation
-          new_translation.update_column(:params, params)
+          new_translation.params = params
+          new_translation.save
         end
 
       end

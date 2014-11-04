@@ -12,7 +12,7 @@ module Sellect::Translate
         elsif new_translation.present? && new_translation.params[column].present?
           new_translation.params[column]
         else
-          puts "nil or fallback"
+          nil
         end
 
       end
