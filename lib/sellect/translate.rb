@@ -1,3 +1,4 @@
+require 'action_view/ext'
 require 'sellect/translate/version'
 require 'sellect/translate/railtie'
 require 'sellect/translate/getter'
@@ -25,6 +26,9 @@ module Sellect::Translate
 
   module ClassMethods
     def translate_fields(*columns)
+      self.send(:define_method, 'translated_fields') do
+        columns
+      end
       columns.each do |column|
         Getter.register(self, column)
         Setter.register(self, column)
