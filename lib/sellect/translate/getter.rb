@@ -12,7 +12,8 @@ module Sellect::Translate
         elsif new_translation.present? && new_translation.params[column].present?
           new_translation.params[column]
         else
-          nil
+          missing_translation = "#{Rails.env.production? ? '' : ' --missing translate'}"
+          read_attribute(column) + missing_translation
         end
 
       end
