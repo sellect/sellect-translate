@@ -27,6 +27,10 @@ describe Sellect::Translate::Getter do
         I18n.default_locale = :en
       end
 
+      after do
+        I18n.locale = :en
+      end
+
       context 'translation exists' do
 
         it 'returns the translated entry from the translation table' do

@@ -29,6 +29,7 @@ module Sellect::Translate
       self.send(:define_method, 'translated_fields') do
         columns
       end
+      self.send(:has_many, :translations, { as: :translatable, class_name: 'Sellect::Translation'})
       columns.each do |column|
         Getter.register(self, column)
         Setter.register(self, column)

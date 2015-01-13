@@ -30,6 +30,7 @@ RSpec.configure do |config|
     m = ActiveRecord::Migration.new
     m.verbose = false
     m.drop_table :dummies
+    m.drop_table :sellect_translations
   end
 
 end
@@ -46,7 +47,6 @@ def build_class(class_name, options = {})
   klass.class_eval do
     include Sellect::Translate::Glue
 
-    has_many :translations, as: :translatable, class_name: 'Sellect::Translation'
     translate_fields :name, :description 
 
     attr_accessible :name, :description
