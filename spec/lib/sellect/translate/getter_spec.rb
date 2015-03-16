@@ -59,7 +59,8 @@ describe Sellect::Translate::Getter do
 
           it 'returns an empty string' do 
             Rails.env = "production"
-            expect(dummy.description).to eq('') 
+            expect(dummy.description).to eq('')
+            Rails.env = "test"
           end
 
         end
