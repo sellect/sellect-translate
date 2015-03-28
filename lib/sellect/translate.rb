@@ -25,7 +25,7 @@ module Sellect::Translate
   end
 
   module ClassMethods
-    def translate_fields(*columns)
+    def translate_fields(*columns)      
       self.send(:define_method, 'translated_fields') do
         columns
       end
@@ -34,7 +34,16 @@ module Sellect::Translate
         Getter.register(self, column)
         Setter.register(self, column)
       end
+      self.send(:include, InstanceMethods)
     end
+  end
+
+  module InstanceMethods
+
+    def current_locale
+      Sellect::Translate.locale
+    end
+
   end
 
 end
