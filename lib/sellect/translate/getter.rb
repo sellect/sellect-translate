@@ -22,13 +22,13 @@ module Sellect::Translate
       end
 
       klass.send(:define_method, :locale_translation) do
-        @locale_translation ||= Rails.cache.fetch(["#{Sellect::Translate.locale}-translation", self], expires_in: 24.hours ) do
+        Rails.cache.fetch(["#{Sellect::Translate.locale}-translation", self], expires_in: 24.hours ) do
           translations.find_by_locale(Sellect::Translate.locale)
         end
       end
 
       klass.send(:define_method, :translated_column) do |column|
-        @translated_column ||= locale_translation.params[column] rescue ''
+        locale_translation.params[column] rescue ''
       end
 
       klass.send(:define_method, :missing_translation) do |column|
