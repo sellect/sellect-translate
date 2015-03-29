@@ -7,6 +7,8 @@ Sellect::Translate::Railtie.insert
 
 ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
 
+Rails.cache = ActiveSupport::Cache::MemoryStore.new
+
 I18n.enforce_available_locales = false
 
 RSpec.configure do |config|
@@ -17,6 +19,7 @@ RSpec.configure do |config|
     m.create_table :dummies do |t| 
       t.string :name
       t.string :description
+      t.timestamps
     end
     m.create_table :sellect_translations do |t|
       t.string     :locale
