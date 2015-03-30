@@ -13,6 +13,9 @@ module Sellect::Translate
           params[column] = translation
           new_translation.params = params
           new_translation.save
+          unless new_record?
+            touch
+          end
         end
 
       end
