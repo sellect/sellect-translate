@@ -1,6 +1,7 @@
 require 'action_view/ext'
 require 'sellect/translate/version'
 require 'sellect/translate/railtie'
+require 'sellect/translate/instance_methods'
 require 'sellect/translate/getter'
 require 'sellect/translate/setter'
 
@@ -36,14 +37,6 @@ module Sellect::Translate
       end
       self.send(:include, InstanceMethods)
     end
-  end
-
-  module InstanceMethods
-
-    def current_locale
-      Sellect::Translate.locale
-    end
-
   end
 
 end
