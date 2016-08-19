@@ -1,3 +1,8 @@
+0.0.4
+-----------
+**Fixes**
+- Fixes strange circular dependency when used in Sidekiq
+
 0.0.3
 -----------
 **Fixes**
