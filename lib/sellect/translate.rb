@@ -1,4 +1,5 @@
 require 'action_view/ext'
+require 'sellect/translate'
 require 'sellect/translate/version'
 require 'sellect/translate/railtie'
 require 'sellect/translate/getter'

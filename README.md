@@ -40,8 +40,15 @@ class Product
   translate_fields :name, :description          # identify translatable columns
 
 end
+```
 
+Example - Creating translations on translatable fields:
 
+```ruby
+product.translations.create(locale: :fr, params: { name: 'funky', presentation: 'Funky' })
+```
+
+```ruby
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/sellect-translate/fork )
@@ -49,3 +56,4 @@ end
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+```
